@@ -29,6 +29,14 @@ model User {
   auditLogs   AuditLog[]
   sessions    UserSession[]
   
+  // Indexes for performance optimization
+  @@index([email])
+  @@index([name])
+  @@index([role])
+  @@index([status])
+  @@index([createdAt])
+  @@index([role, status])
+  @@index([name, email])
   @@map("users")
 }
 
@@ -61,6 +69,15 @@ model AuditLog {
   
   user        User?    @relation(fields: [userId], references: [id])
   
+  // Indexes for performance optimization
+  @@index([userId])
+  @@index([adminId])
+  @@index([action])
+  @@index([entityType])
+  @@index([entityId])
+  @@index([createdAt])
+  @@index([userId, createdAt])
+  @@index([entityType, entityId])
   @@map("audit_logs")
 }
 
@@ -75,6 +92,12 @@ model UserSession {
   
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   
+  // Indexes for performance optimization
+  @@index([userId])
+  @@index([token])
+  @@index([expiresAt])
+  @@index([isActive])
+  @@index([userId, isActive])
   @@map("user_sessions")
 }
 
@@ -87,5 +110,11 @@ model PasswordReset {
   used        Boolean  @default(false)
   createdAt   DateTime @default(now())
   
+  // Indexes for performance optimization
+  @@index([email])
+  @@index([token])
+  @@index([expiresAt])
+  @@index([used])
+  @@index([email, used])
   @@map("password_resets")
 }
