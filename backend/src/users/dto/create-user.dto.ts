@@ -18,7 +18,9 @@ export class CreateUserDto {
   name: string;
 
   @IsOptional()
-  @IsPhoneNumber(undefined, { message: 'Please provide a valid phone number' })
+  @Matches(/^\+?[1-9]\d{1,14}$/, {
+    message: 'Please provide a valid phone number',
+  })
   phone?: string;
 
   @IsEnum(Role, { message: 'Role must be one of: ADMIN, MANAGER, USER' })

@@ -2,7 +2,7 @@ import {
   IsString,
   IsOptional,
   IsEnum,
-  IsPhoneNumber,
+  Matches,
   MinLength,
 } from 'class-validator';
 import { Role, UserStatus } from '@prisma/client';
@@ -14,7 +14,7 @@ export class UpdateUserDto {
   name?: string;
 
   @IsOptional()
-  @IsPhoneNumber(undefined, { message: 'Please provide a valid phone number' })
+  @Matches(/^\+?[1-9]\d{1,14}$/, { message: 'Please provide a valid phone number' })
   phone?: string;
 
   @IsOptional()

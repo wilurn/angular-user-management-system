@@ -6,6 +6,9 @@ import { AppService } from './app.service';
 import { PrismaModule } from './prisma/prisma.module';
 import { HealthModule } from './health/health.module';
 import { UsersModule } from './users/users.module';
+import { SecurityModule } from './security/security.module';
+import { AuthModule } from './auth/auth.module';
+import { RedisModule } from './redis/redis.module';
 
 @Module({
   imports: [
@@ -29,6 +32,15 @@ import { UsersModule } from './users/users.module';
 
     // Users module
     UsersModule,
+
+    // Security module
+    SecurityModule,
+
+    // Authentication module
+    AuthModule,
+
+    // Redis module
+    RedisModule,
   ],
   controllers: [AppController],
   providers: [AppService],
