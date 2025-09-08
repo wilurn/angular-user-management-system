@@ -23,7 +23,7 @@
   - Write integration tests for database connectivity
   - _Requirements: 1.1, 1.2_
 
-- [ ] 3.2 Create User entity and basic CRUD operations
+- [x] 3.2 Create User entity and basic CRUD operations
   - Implement UsersService with create, read, update, delete methods
   - Create DTOs for user creation, updates, and responses
   - Add input validation using class-validator decorators
