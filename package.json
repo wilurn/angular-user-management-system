@@ -1,0 +1,36 @@
+{
+  "name": "user-management-system",
+  "version": "1.0.0",
+  "description": "A comprehensive full-stack user management application",
+  "scripts": {
+    "start:dev": "./start-dev.sh",
+    "start:infrastructure": "docker-compose up -d postgres redis minio",
+    "stop:infrastructure": "docker-compose down",
+    "start:backend": "cd backend && npm run start:dev",
+    "start:frontend": "cd frontend && npm start",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "test:backend": "cd backend && npm run test",
+    "test:frontend": "cd frontend && npm run test",
+    "db:migrate": "cd backend && npx prisma migrate dev",
+    "db:generate": "cd backend && npx prisma generate",
+    "db:push": "cd backend && npx prisma db push",
+    "db:studio": "cd backend && npx prisma studio",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "clean": "rm -rf node_modules backend/node_modules frontend/node_modules backend/dist frontend/dist"
+  },
+  "keywords": [
+    "user-management",
+    "angular",
+    "nestjs",
+    "postgresql",
+    "redis",
+    "docker"
+  ],
+  "author": "User Management System Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}
